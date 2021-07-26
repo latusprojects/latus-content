@@ -17,7 +17,7 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('type');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->foreignId('owner_model_id');
             $table->string('owner_model_class');
             $table->string('title')->nullable();
