@@ -12,6 +12,11 @@ use Latus\Repositories\EloquentRepository;
 class ContentTranslationRepository extends EloquentRepository implements ContentTranslationRepositoryContract
 {
 
+    public function relatedModel(): Model
+    {
+        return new ContentTranslation();
+    }
+
     public function delete(ContentTranslation $contentTranslation)
     {
         $contentTranslation->delete();

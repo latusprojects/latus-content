@@ -13,6 +13,11 @@ use Latus\Content\Repositories\Contracts\ContentRepository as ContentRepositoryC
 class ContentRepository extends EloquentRepository implements ContentRepositoryContract
 {
 
+    public function relatedModel(): Model
+    {
+        return new Content();
+    }
+
     public function delete(Content $content)
     {
         $content->delete();

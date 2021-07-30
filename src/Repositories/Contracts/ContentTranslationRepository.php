@@ -11,8 +11,6 @@ use Latus\Repositories\Contracts\Repository;
 interface ContentTranslationRepository extends Repository
 {
 
-    public function __construct(ContentTranslation $contentTranslation);
-
     public function delete(ContentTranslation $contentTranslation);
 
     public function getContent(ContentTranslation $contentTranslation): Model;
