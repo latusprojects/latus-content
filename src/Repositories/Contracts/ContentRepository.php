@@ -12,8 +12,6 @@ use Latus\Repositories\Contracts\Repository;
 interface ContentRepository extends Repository
 {
 
-    public function __construct(Content $content);
-
     public function delete(Content $content);
 
     public function findByOwner(string $ownerClass, string $ownerId): Model|null;
