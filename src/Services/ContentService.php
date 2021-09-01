@@ -44,6 +44,11 @@ class ContentService
         $this->contentRepository->delete($content);
     }
 
+    public function find(int|string $id): Model|null
+    {
+        return $this->contentRepository->find($id);
+    }
+
     public function findByOwner(string $ownerClass, string $ownerId): Model|null
     {
         return $this->contentRepository->findByOwner($ownerClass, $ownerId);
