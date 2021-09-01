@@ -7,9 +7,13 @@ namespace Latus\Content\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Latus\Permalink\Generators\Contracts\PermalinkGenerator;
+use Latus\Permalink\Models\Traits\HasPermalinks;
 
 class Content extends Model
 {
+    use HasPermalinks;
+
     protected $fillable = [
         'type', 'name', 'owner_model_id', 'owner_model_class', 'title', 'text'
     ];
@@ -24,4 +28,23 @@ class Content extends Model
         return $this->hasMany(ContentTranslation::class);
     }
 
+    public function getPermalinkGenerator(): PermalinkGenerator
+    {
+        return new \Latus\Permalink\Generators\PermalinkGenerator();
+    }
+
+    public function getPermalinkName(): string
+    {
+        return $this->title;
+    }
+
+    public function getPermalinkDate(): string
+    {
+        return $this->created_at;
+    }
+
+    public function getPermalinkId(): int|string
+    {
+        return $this->id;
+    }
 }
