@@ -16,8 +16,8 @@ class ContentService
     public static array $create_validation_rules = [
         'type' => 'required|string|min:3',
         'name' => 'required|string|min:3|unique:contents',
-        'owner_model_class' => 'required|string|min:5',
-        'owner_model_id' => 'required|integer|min:0',
+        'owner_model_class' => 'sometimes|string|min:5',
+        'owner_model_id' => 'sometimes|integer|min:0',
         'title' => 'sometimes|string|nullable',
         'text' => 'required|string'
     ];
