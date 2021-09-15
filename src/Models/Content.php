@@ -7,12 +7,13 @@ namespace Latus\Content\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Latus\Content\Models\Traits\HasMediaAssets;
 use Latus\Permalink\Generators\Contracts\PermalinkGenerator;
 use Latus\Permalink\Models\Traits\HasPermalinks;
 
 class Content extends Model
 {
-    use HasPermalinks;
+    use HasPermalinks, HasMediaAssets;
 
     protected $fillable = [
         'type', 'name', 'owner_model_id', 'owner_model_class', 'title', 'text'
