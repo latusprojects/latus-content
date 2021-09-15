@@ -5,6 +5,7 @@ namespace Latus\Content\Providers;
 use Illuminate\Support\ServiceProvider;
 use Latus\Content\Repositories\Contracts\ContentRepository;
 use Latus\Content\Repositories\Contracts\ContentTranslationRepository;
+use Latus\Content\Repositories\Contracts\MediaAssetRepository;
 
 class ContentServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,10 @@ class ContentServiceProvider extends ServiceProvider
 
         if (!$this->app->bound(ContentTranslationRepository::class)) {
             $this->app->bind(ContentTranslationRepository::class, \Latus\Content\Repositories\Eloquent\ContentTranslationRepository::class);
+        }
+
+        if (!$this->app->bound(MediaAssetRepository::class)) {
+            $this->app->bind(MediaAssetRepository::class, \Latus\Content\Repositories\Eloquent\MediaAssetRepository::class);
         }
     }
 
