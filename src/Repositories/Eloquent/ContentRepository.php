@@ -59,7 +59,7 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
 
     public function paginate(string $type, int $amount, \Closure $authorize = null): LengthAwarePaginator
     {
-        $query = DB::table('contents')->where('type', $type);
+        $query = DB::table('contents')->where('type', $type)->orderBy('created_at');
 
         if ($authorize) {
             $query->each($authorize);
