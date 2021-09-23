@@ -4,6 +4,7 @@
 namespace Latus\Content\Services;
 
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
@@ -77,6 +78,11 @@ class ContentService
     public function setTextOfContent(Content $content, string $text)
     {
         $this->contentRepository->setText($content, $text);
+    }
+
+    public function paginateContent(string $type, int $amount, \Closure $authorize = null): LengthAwarePaginator
+    {
+        return $this->contentRepository->paginate($type, $amount, $authorize);
     }
 
 }

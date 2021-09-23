@@ -4,6 +4,7 @@
 namespace Latus\Content\Repositories\Contracts;
 
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Latus\Content\Models\Content;
@@ -25,5 +26,7 @@ interface ContentRepository extends Repository
     public function setTitle(Content $content, string|null $title);
 
     public function setText(Content $content, string $text);
+
+    public function paginate(string $type, int $amount, \Closure $authorize = null): LengthAwarePaginator;
 
 }
