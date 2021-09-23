@@ -62,7 +62,7 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
         $query = DB::table('contents')->where('type');
 
         if ($authorize) {
-            $query->where($authorize);
+            $query->each($authorize);
         }
 
         return $query->paginate($amount);
