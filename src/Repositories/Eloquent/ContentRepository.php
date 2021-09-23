@@ -4,8 +4,10 @@
 namespace Latus\Content\Repositories\Eloquent;
 
 
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Latus\Content\Models\Content;
 use Latus\Repositories\EloquentRepository;
 use Latus\Content\Repositories\Contracts\ContentRepository as ContentRepositoryContract;
@@ -53,5 +55,16 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
     {
         $content->text = $text;
         $content->save();
+    }
+
+    public function paginate(string $type, int $amount, \Closure $authorize = null): LengthAwarePaginator
+    {
+        $query = DB::table('contents')->where('type');
+
+        if ($authorize) {
+            $query->where($authorize);
+        }
+
+        return $query->paginate($amount);
     }
 }
