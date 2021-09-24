@@ -15,6 +15,8 @@ class Content extends Model
 {
     use HasPermalinks, HasMediaAssets;
 
+    protected $table = 'contents';
+
     protected $fillable = [
         'type', 'name', 'owner_model_id', 'owner_model_class', 'title', 'text'
     ];
