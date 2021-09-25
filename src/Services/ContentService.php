@@ -24,9 +24,13 @@ class ContentService
     ];
 
     public function __construct(
-        protected ContentRepository $contentRepository
+        protected ContentRepository $contentRepository,
+        protected Content|null      $relatedModel = null
     )
     {
+        if ($this->relatedModel) {
+            $this->contentRepository->setRelatedModel($this->relatedModel);
+        }
     }
 
     public function createContent(array $attributes): Model
