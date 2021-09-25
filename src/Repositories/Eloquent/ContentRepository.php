@@ -15,8 +15,19 @@ use Latus\Content\Repositories\Contracts\ContentRepository as ContentRepositoryC
 class ContentRepository extends EloquentRepository implements ContentRepositoryContract
 {
 
+    protected Content $relatedModel;
+
+    public function setRelatedModel(Content $content)
+    {
+        $this->relatedModel = $content;
+    }
+
     public function relatedModel(): Model
     {
+        if (isset($this->{'relatedModel'})) {
+            return $this->relatedModel;
+        }
+
         return new Content();
     }
 
@@ -27,12 +38,12 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
 
     public function findByOwner(string $ownerClass, string $ownerId): Model|null
     {
-        return Content::where('owner_model_class', $ownerClass)->where('owner_model_id', $ownerId)->first();
+        return $this->relatedModel()::where('owner_model_class', $ownerClass)->where('owner_model_id', $ownerId)->first();
     }
 
     public function findByName(string $name): Model|null
     {
-        return Content::where('name', $name)->first();
+        return $this->relatedModel()::where('name', $name)->first();
     }
 
     public function getTranslations(Content $content): Collection
@@ -59,7 +70,7 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
 
     public function paginate(string $type, int $amount, \Closure $authorize = null): LengthAwarePaginator
     {
-        $query = DB::table('contents')->where('type', $type)->orderBy('created_at');
+        $query = $this->relatedModel()::where('type', $type)->orderBy('created_at');
 
         if ($authorize) {
             $query->each($authorize);

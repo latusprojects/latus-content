@@ -29,4 +29,6 @@ interface ContentRepository extends Repository
 
     public function paginate(string $type, int $amount, \Closure $authorize = null): LengthAwarePaginator;
 
+    public function setRelatedModel(Content $content);
+
 }
