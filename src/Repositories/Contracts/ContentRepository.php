@@ -19,6 +19,8 @@ interface ContentRepository extends Repository
 
     public function findByName(string $name): Model|null;
 
+    public function getByNames(array $names): Collection;
+
     public function getTranslations(Content $content): Collection;
 
     public function getTranslation(Content $content, string $language): Model|null;

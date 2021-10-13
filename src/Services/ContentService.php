@@ -64,6 +64,11 @@ class ContentService
         return $this->contentRepository->findByName($name);
     }
 
+    public function getByNames(array $names): Collection
+    {
+        return $this->contentRepository->getByNames($names);
+    }
+
     public function getTranslationsOfContent(Content $content): Collection
     {
         return $this->contentRepository->getTranslations($content);

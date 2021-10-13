@@ -46,6 +46,11 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
         return $this->relatedModel()::where('name', $name)->first();
     }
 
+    public function getByNames(array $names): Collection
+    {
+        return $this->relatedModel()->whereIn('name', $names)->get();
+    }
+
     public function getTranslations(Content $content): Collection
     {
         return $content->translations()->get();
