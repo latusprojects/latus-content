@@ -33,4 +33,6 @@ interface ContentRepository extends Repository
 
     public function setRelatedModel(Content $content);
 
+    public function generatePermalink(Content $content, string $syntax): string;
+
 }

@@ -94,4 +94,9 @@ class ContentService
         return $this->contentRepository->paginate($type, $amount, $authorize);
     }
 
+    public function generatePermalinkForContent(Content $content, string $syntax): string
+    {
+        return $this->contentRepository->generatePermalink($content, $syntax);
+    }
+
 }

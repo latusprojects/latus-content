@@ -83,4 +83,9 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
 
         return $query->paginate($amount);
     }
+
+    public function generatePermalink(Content $content, string $syntax): string
+    {
+        return $content->generatePermalink($syntax);
+    }
 }
