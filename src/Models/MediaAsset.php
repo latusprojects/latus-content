@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class MediaAsset extends Model
 {
     protected $fillable = [
-        'is_public', 'name', 'filename', 'description', 'owner_model_id', 'owner_model_class', 'reference'
+        'is_public', 'name', 'filename', 'description', 'owner_model_id', 'owner_model_class', 'reference', 'tags', 'virtual_folder'
     ];
 
     protected $hidden = [

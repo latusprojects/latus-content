@@ -23,6 +23,8 @@ class CreateMediaAssetsTable extends Migration
             $table->foreignId('owner_model_id')->nullable();
             $table->string('owner_model_class')->nullable();
             $table->string('reference')->unique()->nullable();
+            $table->string('tags')->nullable();
+            $table->string('virtual_folder')->default('');
         });
     }
 
