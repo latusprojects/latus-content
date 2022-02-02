@@ -7,7 +7,6 @@ namespace Latus\Content\Repositories\Eloquent;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use Latus\Content\Models\Content;
 use Latus\Repositories\EloquentRepository;
 use Latus\Content\Repositories\Contracts\ContentRepository as ContentRepositoryContract;
@@ -16,6 +15,15 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
 {
 
     protected Content $relatedModel;
+
+    public function create(array $attributes): Model
+    {
+        $content = parent::create($attributes);
+        $content->lb_content = $content->text;
+        $content->save();
+
+        return $content;
+    }
 
     public function setRelatedModel(Content $content)
     {
@@ -70,6 +78,7 @@ class ContentRepository extends EloquentRepository implements ContentRepositoryC
     public function setText(Content $content, string $text)
     {
         $content->text = $text;
+        $content->lb_content = $text;
         $content->save();
     }
 

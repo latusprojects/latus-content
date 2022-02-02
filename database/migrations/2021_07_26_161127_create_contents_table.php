@@ -22,6 +22,7 @@ class CreateContentsTable extends Migration
             $table->string('owner_model_class')->nullable();
             $table->string('title')->nullable();
             $table->longText('text');
+            $table->string('blade_view')->nullable();
         });
     }
 

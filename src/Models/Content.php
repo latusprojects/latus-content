@@ -10,15 +10,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Latus\Content\Models\Traits\HasMediaAssets;
 use Latus\Permalink\Generators\Contracts\PermalinkGenerator;
 use Latus\Permalink\Models\Traits\HasPermalinks;
+use VanOns\Laraberg\Models\Gutenbergable;
 
 class Content extends Model
 {
-    use HasPermalinks, HasMediaAssets;
+    use HasPermalinks, HasMediaAssets, Gutenbergable;
 
     protected $table = 'contents';
 
     protected $fillable = [
-        'type', 'name', 'owner_model_id', 'owner_model_class', 'title', 'text'
+        'type', 'name', 'owner_model_id', 'owner_model_class', 'title', 'text', 'blade_view'
     ];
 
     public function owner(): BelongsTo
