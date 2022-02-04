@@ -20,7 +20,8 @@ class ContentService
         'owner_model_class' => 'sometimes|string|min:5',
         'owner_model_id' => 'sometimes|integer|min:0',
         'title' => 'sometimes|string|nullable',
-        'text' => 'required|string'
+        'text' => 'present|string',
+        'blade_view' => 'sometimes|string|min:3|max:255'
     ];
 
     public function __construct(
