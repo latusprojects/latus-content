@@ -25,20 +25,6 @@
       "providers": [
         "Latus\\Content\\Providers\\ContentServiceProvider"
       ]
-    },
-    "branch-alias": {
-      "dev-develop": "0.1.x-dev"
-    }
-  },
-  "repositories": {
-    "permalink": {
-      "type": "path",
-      "url": "P:\\latus-projects\\laravel-packages\\latus-permalink",
-      "symlink": true
-    },
-    "0": {
-      "type": "composer",
-      "url": "https://latusprojects.repo.repman.io"
     }
   },
   "minimum-stability": "dev"
